@@ -12,15 +12,15 @@ class UserDataController extends Controller
     public function create(Request $request)
     {
 
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'contact' => 'required',
-            'address' => 'required',
-            'gender' => 'required',
-            'overview' => 'required',
-            'role_type' => 'required',
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'contact' => 'required',
+        //     'address' => 'required',
+        //     'gender' => 'required',
+        //     'overview' => 'required',
+        //     'role_type' => 'required',
+        // ]);
 
         $role = $request->input('role_type');
 
@@ -40,11 +40,6 @@ class UserDataController extends Controller
 
         $users = Data::create([
             'user_name' => $request->input('name'),
-            'user_email' => $request->input('email'),
-            'user_contact' => $request->input('contact'),
-            'overview' => $request->input('overview'),
-            'role_type' => $roleType,
-            'role_id' => $lastId->id,
         ]);
 
         return redirect()->back()->with(['success' => 'User Data Saved..']);
